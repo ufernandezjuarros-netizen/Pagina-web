@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segurtasun Informatikoaren Hiztegia</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+    <!-- CSS Grid Container -->
+    <div class="grid-container">
+
+        <!-- HEADER: Webgunearen izenburua eta sarrera -->
+        <header class="main-header">
+            <h1>Segurtasun Informatikoaren Hiztegia</h1>
+            <p>Ikasturtean zehar ikasitako kontzeptu eta tresnen bilduma</p>
+        </header>
+
+        <!-- NAV: Navigazio-menua / Ataletara bideratzeko -->
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#hasiera">Hasiera (klik-ez)</a></li>
+                <li><a href="#hiztegia">Hiztegia</a></li>
+                <li><a href="#baliabideak">Baliabideak (klik-ez)</a></li>
+            </ul>
+        </nav>
+
+        <!-- MAIN: Hiztegiko terminoak eta azalpenak -->
+        <main class="main-content" id="hiztegia">
+            <h2>Termino Nagusiak (Klikagarriak)</h2>
+
+            <article id="phishinga" class="term-card" data-target="modal-phishinga">
+                <h3>Phishinga</h3>
+                <p>Iruzurrezko teknika bat da, non erasotzailea erakunde fidagarri baten moduan aurkezten den (adibidez, banku bat edo posta zerbitzu bat) biktimaren informazio konfidentziala lortzeko, hala nola pasahitzak edo kreditu-txartelen datuak.</p>
+            </article>
+
+            <article id="biren-erasoa" class="term-card" data-target="modal-biren-erasoa">
+                <h3>Biren Erasoa (Man-in-the-Middle)</h3>
+                <p>Erasotzailea bi alderdiren arteko komunikazioan ezkutuan sartzen denean gertatzen da, elkarrizketa edo datu-trukea ikuskatzeko edo aldatzeko, biek zuzenean elkarrekin hitz egiten ari direla uste duten bitartean.</p>
+            </article>
+
+            <article id="troiarra" class="term-card" data-target="modal-troiarra">
+                <h3>Troiarra (Trojan)</h3>
+                <p>Nahi den edo erabilgarria den software baten itxura duen programa kaltegarria (malwarea) da, baina exekutatzerakoan erasotzaileari sistemarako sarbide ez baimendua ematen diona.</p>
+            </article>
+
+            <article id="backdoorsak" class="term-card" data-target="modal-backdoorsak">
+                <h3>Backdoorsak (Atzeko Ateak)</h3>
+                <p>Sistema edo programa batean nahita edo malware bidez utzitako sarbide sekretu bat da, ohiko autentifikazio prozesuak saihestuz sisteman sartzeko aukera ematen duena.</p>
+            </article>
+
+            <article id="spywarea" class="term-card" data-target="modal-spywarea">
+                <h3>Spywarea</h3>
+                <p>Erabiltzailearen baimenik gabe bere gailuko jarduera jarraitzeko, datuak biltzeko eta informazio hori hirugarrenei bidaltzeko diseinatutako software software kaltegarria.</p>
+            </article>
+
+            <article id="stealerrak" class="term-card" data-target="modal-stealerrak">
+                <h3>Stealerrak (Informazio Lapurrak)</h3>
+                <p>Gailutik informazio zehatza lapurtzera bideratutako spyware mota espezifikoa da; esaterako, nabigatzailean gordetako pasahitzak, saio-hasierako tokenak edo kriptomoneta-zorroen datuak.</p>
+            </article>
+        </main>
+
+        <!-- ASIDE: Informazio osagarria, oharrak edo lasterbideak -->
+        <aside class="sidebar">
+            <h3>Lasterbideak</h3>
+            <ul>
+                <li><a href="#phishinga">Phishinga</a></li>
+                <li><a href="#biren-erasoa">Biren erasoa</a></li>
+                <li><a href="#troiarra">Troiarra</a></li>
+                <li><a href="#backdoorsak">Backdoorsak</a></li>
+                <li><a href="#spywarea">Spywarea</a></li>
+                <li><a href="#stealerrak">Stealerrak</a></li>
+            </ul>
+
+            <hr>
+
+            <h3>Oharra</h3>
+            <p>Hiztegi hau ikasturtean zehar eguneratzen joango da termino berriekin.</p>
+        </aside>
+
+        <!-- FOOTER: Egilearen informazioa eta lizentzia -->
+        <footer class="main-footer">
+            <p>&copy; 2026 Segurtasun Informatikoaren Hiztegia - Ikasturteko Proiektua</p>
+        </footer>
+
+    </div>
+
+    <!-- ==========================================================
+         LEIHO MODALAK (<dialog>)
+         ========================================================== -->
+
+    <!-- Modal 1: Phishinga -->
+    <dialog id="modal-phishinga" class="info-modal">
+        <div class="modal-header">
+            <h2>Phishinga - Informazio Zabaldua</h2>
+            <button class="close-modal-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p><strong>Nola babestu:</strong> Egiaztatu beti mezu elektronikoen bidaltzailea eta ez egin klik esteka zalantzagarrietan.</p>
+            <p>Hemen zure informazioa gehi dezakezu...</p>
+        </div>
+    </dialog>
+
+    <!-- Modal 2: Biren erasoa -->
+    <dialog id="modal-biren-erasoa" class="info-modal">
+        <div class="modal-header">
+            <h2>Biren Erasoa - Informazio Zabaldua</h2>
+            <button class="close-modal-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>Hemen zure informazioa gehi dezakezu...</p>
+        </div>
+    </dialog>
+
+    <!-- Modal 3: Troiarra -->
+    <dialog id="modal-troiarra" class="info-modal">
+        <div class="modal-header">
+            <h2>Troiarra - Informazio Zabaldua</h2>
+            <button class="close-modal-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>Hemen zure informazioa gehi dezakezu...</p>
+        </div>
+    </dialog>
+
+    <!-- Modal 4: Backdoorsak -->
+    <dialog id="modal-backdoorsak" class="info-modal">
+        <div class="modal-header">
+            <h2>Backdoorsak - Informazio Zabaldua</h2>
+            <button class="close-modal-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>Hemen zure informazioa gehi dezakezu...</p>
+        </div>
+    </dialog>
+
+    <!-- Modal 5: Spywarea -->
+    <dialog id="modal-spywarea" class="info-modal">
+        <div class="modal-header">
+            <h2>Spywarea - Informazio Zabaldua</h2>
+            <button class="close-modal-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>Hemen zure informazioa gehi dezakezu...</p>
+        </div>
+    </dialog>
+
+    <!-- Modal 6: Stealerrak -->
+    <dialog id="modal-stealerrak" class="info-modal">
+        <div class="modal-header">
+            <h2>Stealerrak - Informazio Zabaldua</h2>
+            <button class="close-modal-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>Hemen zure informazioa gehi dezakezu...</p>
+        </div>
+    </dialog>
+
+    <!-- JavaScript fitxategia -->
+    <script src="js.js"></script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+/* ==========================================================
+   1. HASTAPENAK ETA VARIABLEAK
+   ========================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #7f889d;   /* Urdin oso iluna */
+    --secondary-color: #3a7beb; /* Urdin/Gris iluna */
+    --accent-color: #ef4444;    /* Gorria nabarmentzeko */
+    --bg-color: #090d16;        /* Atzeko plano oso iluna (Neón-erako) */
+    --card-bg: rgba(30, 41, 59, 0.7); /* Txartel zehargarriak */
+    --text-color: #f8fafc;      /* Testu argia */
+    --light-text: #94a3b8;     /* Testu dirdiratsuagoa / azpizenburuak */
+    --border-color: #334155;   /* Muga ilunagoak */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* Cursorraren posizioa (JS bidez eguneratzen da) */
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    
+    /* Atzeko planoaren gradientea (Cursorraren argia) */
+    background-color: var(--bg-color);
+    background-image: radial-gradient(
+        120px circle at var(--mouse-x) var(--mouse-y),
+        rgba(60, 173, 205, 0.1),  /* Neón urdin/ziana oso sutila */
+        
+        var(--bg-color) 100%
+    );
+    background-attachment: fixed;
+}
+
+/* ==========================================================
+   2. GRID LAYOUT-A (GRID-TEMPLATE-AREAS)
+   ========================================================== */
+.grid-container {
+    display: grid;
+    min-height: 100vh;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    /* Grid eremuen banaketa (Pantaila handietan) */
+    grid-template-areas:
+        "header  header"
+        "nav     nav"
+        "main    aside"
+        "footer  footer";
+
+    /* Zutabeen zabalera: Main-ek leku gehiago hartuko du, Sidebar-ek gutxiago */
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: auto auto 1fr auto;
+}
+
+/* Elementu bakoitzari bere eremua esleitu */
+.main-header  { grid-area: header; }
+.main-nav     { grid-area: nav; }
+.main-content { grid-area: main; }
+.sidebar      { grid-area: aside; }
+.main-footer  { grid-area: footer; }
+
+
+/* ==========================================================
+   3. ELEMENTUEN ESTILOAK
+   ========================================================== */
+
+/* HEADER */
+.main-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.main-header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.main-header p {
+    color: #cbd5e0;
+    font-size: 1.1rem;
+}
+
+/* NAV (Nabigazioa) */
+.main-nav {
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    padding: 0.8rem;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.05rem;
+    
+    border: 2px solid #ffffff;
+    border-radius: 6px;
+    padding: 0.5rem 1.2rem;
+    display: inline-block;
+    
+    /* Transición suave para el movimiento y color */
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efecto Hover: Elevar 3px arriba y desplazarse 2px a la izquierda */
+.main-nav a:hover {
+    background-color: #ffffff;
+    color: var(--primary-color);
+    transform: translate(-1px, -3px); /* X: -2px (izquierda), Y: -3px (arriba) */
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra suave para dar sensación de elevación */
+}
+
+/* Efecto al pasar el ratón por encima (Hover) */
+.main-nav a:hover {
+    background-color: #ffffff;
+    color: var(--secondary-color); /* Invierte los colores al pasar el ratón */
+}
+
+/* MAIN CONTENT (Terminoak) */
+.main-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--secondary-color);
+    padding-bottom: 5px;
+}
+
+/* Artikuluak / Txartelak (Orain klikagarriak) */
+.term-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-left: 5px solid var(--secondary-color);
+    border-radius: 6px;
+    padding: 1.2rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    cursor: pointer; /* Sagua gainean jartzean klikagarria dela erakusteko */
+}
+
+.term-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+    border-left-color: var(--primary-color);
+}
+
+.term-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+/* ASIDE (Sidebar / Lasterbideak) */
+.sidebar {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    height: fit-content;
+}
+
+.sidebar h3 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.sidebar li {
+    margin-bottom: 0.6rem;
+}
+
+/* Enlaces del sidebar */
+.sidebar a {
+    color: #38bdf8; /* Color azul claro neón para resaltar sobre fondo oscuro */
+    text-decoration: none;
+    transition: text-decoration 0.2s ease;
+}
+
+/* Al pasar el ratón: mantiene el color y solo añade el subrayado */
+.sidebar a:hover {
+    color: #38bdf8; /* Mantiene exactamente el mismo color */
+    text-decoration: underline; /* Solo añade el subrayado */
+}
+
+.sidebar hr {
+    border: 0;
+    height: 1px;
+    background: var(--border-color);
+    margin: 1.5rem 0;
+}
+
+/* FOOTER */
+.main-footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1.2rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+
+/* ==========================================================
+   4. VENTANAS MODALES (<dialog>)
+   ========================================================== */
+.info-modal {
+    border: none;
+    border-radius: 8px;
+    padding: 1.5rem;
+    max-width: 600px;
+    width: 90%;
+    margin: auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Atzeko planoa iluntzeko efektua */
+.info-modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.modal-header h2 {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+}
+
+.close-modal-btn {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--light-text);
+    transition: color 0.2s ease;
+}
+
+.close-modal-btn:hover {
+    color: var(--accent-color);
+}
+
+.modal-body {
+    line-height: 1.6;
+}
+
+
+/* ==========================================================
+   5. RESPONSIVE DESIGN (Mugikor eta gailu txikientzat)
+   ========================================================== */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-areas:
+            "header"
+            "nav"
+            "main"
+            "aside"
+            "footer";
+        grid-template-columns: 1fr;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
